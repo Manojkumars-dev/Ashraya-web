@@ -15,6 +15,19 @@ export const BRAND_ASSETS = {
     'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85',
 };
 
+export const CONTACT_INFO = {
+  phones: [
+    { display: '+91 77952 59014', raw: '+917795259014' },
+    { display: '+91 87221 78305', raw: '+918722178305' },
+  ],
+  whatsapp: '917795259014',
+  whatsappDisplay: '+91 77952 59014',
+  email: 'studio@ashraya.in',
+  locations: 'Bangalore · Channapatna · Mandya · Maddur',
+  address: 'Bangalore · Channapatna · Mandya · Maddur, Karnataka',
+  hours: 'Mon–Sat: 9:30 AM – 7:00 PM (By Appointment)',
+};
+
 export const nav = [
   ['Home', 'hero'],
   ['About', 'who-we-are'],
@@ -183,76 +196,94 @@ export const services = SERVICES_DATA.map(s => [s.title, s.shortDesc]);
 
 export const PROJECTS_DATA = [
   {
-    id: 'alabaster-villa',
-    name: 'The Alabaster Villa',
-    location: 'Indiranagar, Bangalore',
+    id: 'bangalore',
+    name: 'Bangalore',
+    location: 'Bangalore',
     type: 'Turnkey Architectural Villa',
     year: '2024',
-    area: '8,500 SQ.FT',
+    area: '6,500 SQ.FT',
     packageUsed: 'Royal Tier',
     summary:
-      'Complete architectural turnkey build featuring triple-height lightwells, Italian Statuario flooring, and integrated motorized facade louvers.',
+      'A contemporary multi-level family residence featuring double-height living areas, Italian marble flooring, and concealed architectural lighting.',
     architecturalNotes:
-      'Conceived as a serene limestone monolith overlooking lush surroundings, The Alabaster Villa balances brutalist cantilever engineering with warm burnt-teak courtyard screens and a black granite reflection pool.',
+      'Designed with central daylight shafts and sound-insulated bedrooms. Features custom walnut cabinetry, motorized blinds, and landscaped terrace gardens.',
     highlights: [
-      '14-month turnkey delivery from rock excavation to final art styling',
+      '14-month turnkey delivery from excavation to final art styling',
       '3,200 sq.ft of bookmatched Italian Statuario marble laid with zero-joint epoxy',
-      'Full Lutron HomeWorks automation controlling 94 lighting & drapery zones',
-      'Private subterranean home cinema with Dolby Atmos acoustic isolation',
+      'Full Lutron HomeWorks automation controlling lighting & drapery zones',
+      'Acoustic double-glazed windows for city noise reduction',
     ],
     image:
       'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1600&q=85',
     mobileImage:
       'https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=1200&q=85',
-    alt: 'The Alabaster Villa in Bangalore featuring sweeping double-height glass windows and travertine cladding',
+    alt: 'Contemporary luxury residence in Bangalore with expansive glass facades and warm evening lighting',
   },
   {
-    id: 'verdant-horizon',
-    name: 'Verdant Horizon Penthouse',
-    location: 'Whitefield, Bangalore',
-    type: 'Signature Sky Penthouse',
-    year: '2023',
-    area: '5,200 SQ.FT',
-    packageUsed: 'Royal Tier',
-    summary:
-      'Haute interior transformation including custom automated climate zoning, acoustic ceiling baffled layouts, and bespoke walnut cabinetry.',
-    architecturalNotes:
-      'Spanning the 28th and 29th floors, this duplex bare-shell penthouse was reimagined with a sculptural cantilevered steel-and-walnut staircase, smoked Belgian glass partitions, and a private sky conservatory.',
-    highlights: [
-      'Structural steel helical staircase clad in hand-rubbed American Walnut',
-      'Bespoke chef’s dry & wet kitchen with Blum Servo-Drive and Miele wine column',
-      'Master suite dressing gallery with 18 linear feet of illuminated fluted glass',
-      'Acoustic double-glazed Schüco sliders achieving 42dB urban noise reduction',
-    ],
-    image:
-      'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=85',
-    mobileImage:
-      'https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1200&q=85',
-    alt: 'Interior and exterior terrace of Verdant Horizon Penthouse in Bangalore showcasing panoramic glass and walnut panelling',
-  },
-  {
-    id: 'elysian-estate',
-    name: 'Elysian Estate',
-    location: 'Mandya Highway, Maddur',
-    type: 'Turnkey Heritage Residence',
+    id: 'channapatna',
+    name: 'Channapatna',
+    location: 'Channapatna',
+    type: 'Contemporary Turnkey Bungalow',
     year: '2024',
-    area: '11,000 SQ.FT',
+    area: '4,600 SQ.FT',
     packageUsed: 'Royal Tier',
     summary:
-      'Expansive monolithic residence designed for multi-generational living, featuring resilient structural elements and private atelier wing.',
+      'A striking two-storey contemporary bungalow featuring geometric cantilever architecture, laser-cut decorative facade screens, and ambient warm exterior illumination.',
     architecturalNotes:
-      'Engineered with quiet grandeur, Elysian Estate pairs board-formed architectural concrete with aged Burma teak ceilings and tranquil courtyard water channels.',
+      'Constructed with heavy monolithic concrete framing and thermal-break insulation. Highlights include a custom laser-cut balcony privacy screen, exterior wooden soffit panelling, and integrated perimeter landscape lighting.',
     highlights: [
-      'Fe-550D primary reinforcement & sulfate-resistant structural concrete framing',
-      'Central tropical courtyard with retractable bioclimatic aluminum pergola',
-      'Hand-troweled lime micro-cement walls and honed black basalt stone decks',
-      '6 bedroom suites with private outdoor rain showers and Gessi PVD brassware',
+      'Engineered cantilever terrace with custom decorative laser-cut privacy jali',
+      'Heavy-duty Fe-550D structural concrete framing with German 7-layer waterproofing',
+      'Weatherproof exterior warm-beam architectural focus lights and LED soffits',
+      'Integrated boundary landscaping and automated designer entrance gate',
     ],
-    image:
-      'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1600&q=85',
-    mobileImage:
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85',
-    alt: 'Heritage modern Elysian Estate near Mandya and Maddur with dramatic concrete frames and teak screens',
+    image: '/projects/modern-villa-elevation.jpg',
+    mobileImage: '/projects/modern-villa-elevation.jpg',
+    alt: 'Modern two-storey turnkey villa in Channapatna with geometric cantilever frame and custom laser-cut facade pattern',
+  },
+  {
+    id: 'mandya',
+    name: 'Mandya',
+    location: 'Mandya',
+    type: 'Luxury Duplex Living Architecture',
+    year: '2023',
+    area: '5,800 SQ.FT',
+    packageUsed: 'Royal Tier',
+    summary:
+      'Monumental double-height formal salon anchored by bookmatched black marble feature cladding, an upper glass-railing mezzanine, and custom acoustic fluted panelling.',
+    architecturalNotes:
+      'Sculpted around vertical volume and ambient optics. Features continuous zero-joint Italian marble flooring, acoustic fluted timber panels with vertical back-lit LED profiles, and motorized ceiling pelmet drapery.',
+    highlights: [
+      '21-foot double-height living room with structural mezzanine glass bridge',
+      'Bookmatched Nero gold marble slab wall with integrated floating media unit',
+      'Architectural warm LED cove channels and acoustic fluted vertical battens',
+      'Full-slab polished marble flooring with mirror diamond buffing',
+    ],
+    image: '/projects/double-height-living.jpg',
+    mobileImage: '/projects/double-height-living.jpg',
+    alt: 'Double-height grand living hall in Mandya featuring upper mezzanine glass railing and black gold marble media wall',
+  },
+  {
+    id: 'maddur',
+    name: 'Maddur',
+    location: 'Maddur',
+    type: 'Bespoke Interior & Millwork Architecture',
+    year: '2024',
+    area: '4,200 SQ.FT',
+    packageUsed: 'Premium Tier',
+    summary:
+      'A thoughtfully crafted family residence centered around a bespoke architectural pooja shrine, modern dining layout, and artisanal woodwork.',
+    architecturalNotes:
+      'Combines traditional architectural sanctum proportions with modern precision joinery. Features seasoned Burma teak tiered roof elements, brushed metallic column reveals, and textured ambient lighting.',
+    highlights: [
+      'Handcrafted architectural pooja shrine with solid teak wood tiered shikhara',
+      'Translucent fluted shutter panels with custom brass inlay grid framing',
+      'Contemporary dining integration with spherical woven geometric chandeliers',
+      'Natural polished marble surfaces with concealed anti-glare architectural lighting',
+    ],
+    image: '/projects/pooja-mandir-interior.png',
+    mobileImage: '/projects/pooja-mandir-interior.png',
+    alt: 'Bespoke architectural pooja mandir and luxury dining space in Maddur with artisanal wood shikhara and designer lighting',
   },
 ];
 
@@ -690,41 +721,48 @@ export const mats = MATERIALS_DATA.map(m => m.name);
 
 export const TESTIMONIALS_DATA = [
   {
-    id: 'menon',
+    id: 'rajesh-mandya',
     quote:
-      'Ashraya transformed our plot in Bangalore into an architectural sanctuary. Their execution of the 22-foot double-height living pavilion and bookmatched Statuario marble was effortless—delivered on the exact promised date with zero budget drift.',
-    clientName: 'Rajiv & Dr. Sunita Menon',
-    clientRole: 'Homeowners · The Alabaster Villa',
-    projectType: '8,500 sq.ft Turnkey Villa (Royal Package)',
-    location: 'Indiranagar, Bangalore',
-    area: '8,500 SQ.FT',
-    year: '2024',
+      'We built our two-storey home in Mandya through Ashraya. The biggest relief was having both civil work and interiors handled by the same team. We didn’t have to chase separate carpenters and masons, and the work was completed before our planned housewarming date.',
+    clientName: 'Rajesh Gowda',
+    location: 'Mandya',
+    rating: 5,
   },
   {
-    id: 'rao',
+    id: 'suresh-channapatna',
     quote:
-      'Choosing the Royal Package eliminated every ounce of coordination stress. From the Lutron lighting scenes that shift warmly at sunset to our custom Burma teak dining table, every millimeter feels like an international design monograph.',
-    clientName: 'Vikramaditya & Meera Rao',
-    clientRole: 'Homeowners · Verdant Horizon Penthouse',
-    projectType: '5,200 sq.ft Duplex Penthouse Interior',
-    location: 'Whitefield, Bangalore',
-    area: '5,200 SQ.FT',
-    year: '2023',
+      'Very honest and transparent with pricing. For our house in Channapatna, they gave an itemized rate at the beginning and stuck to it till handover. The teak woodwork in the pooja room and living hall came out exceptionally well.',
+    clientName: 'Suresh Kumar',
+    location: 'Channapatna',
+    rating: 5,
   },
   {
-    id: 'sundaram',
+    id: 'preethi-bangalore',
     quote:
-      'Building in Mandya required serious structural discipline and climate responsiveness. Ashraya’s civil engineers and interior designers worked as one cohesive brain—our courtyard home feels timeless, quiet, and impregnable.',
-    clientName: 'Arjun & Kavitha Sundaram',
-    clientRole: 'Homeowners · Elysian Estate',
-    projectType: '11,000 sq.ft Heritage Residence (Royal Package)',
-    location: 'Mandya Highway, Maddur',
-    area: '11,000 SQ.FT',
-    year: '2024',
+      'Ashraya handled our villa construction and complete interior design in Bangalore. The quality of foundation, plumbing, and electrical planning is top-notch. Their site engineers gave us weekly photo updates so we didn’t have to visit the site every weekend.',
+    clientName: 'Dr. Preethi Ramesh',
+    location: 'Bangalore',
+    rating: 5,
+  },
+  {
+    id: 'venkatesh-maddur',
+    quote:
+      'Finding reliable contractors near Maddur used to be difficult. Ashraya built our family residence with proper soil testing, quality steel, and excellent modular kitchen fittings. Their finishing work on flooring and false ceiling is very clean.',
+    clientName: 'Venkatesh Murthy',
+    location: 'Maddur',
+    rating: 5,
+  },
+  {
+    id: 'anitha-bangalore',
+    quote:
+      'Their design team really listened to our routine and storage needs rather than pushing generic templates. The living room partition, kitchen storage, and wardrobe finishes feel durable and well thought out. Highly recommended.',
+    clientName: 'Anitha Shivanna',
+    location: 'Bangalore',
+    rating: 5,
   },
 ];
 
-export const quotes = TESTIMONIALS_DATA.map(t => [t.quote, t.clientName, t.clientRole]);
+export const quotes = TESTIMONIALS_DATA.map(t => [t.quote, t.clientName, t.location]);
 
 export const TRUST_ITEMS = [
   {

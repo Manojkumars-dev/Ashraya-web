@@ -36,6 +36,7 @@ import {
   TESTIMONIALS_DATA,
   TRUST_ITEMS,
   BRAND_ASSETS,
+  CONTACT_INFO,
 } from '../data';
 import Logo from './Logo';
 import { E, Reveal, Stagger, Item } from '../motion';
@@ -228,7 +229,6 @@ export const Projects = () => {
               <source media="(max-width:768px)" srcSet={activeProj.mobileImage || activeProj.image} />
               <img src={activeProj.image} alt={activeProj.alt} loading="lazy" />
             </picture>
-            <div className="proj-pkg-badge">{activeProj.packageUsed}</div>
           </div>
 
           <div className="proj-showcase-info">
@@ -237,8 +237,6 @@ export const Projects = () => {
               <span><Ruler size={14} /> {activeProj.area}</span>
               <span><Calendar size={14} /> {activeProj.year}</span>
             </div>
-            <h3>{activeProj.name}</h3>
-            <p className="proj-type-lbl">{activeProj.type} · {activeProj.packageUsed}</p>
             <p className="proj-summary-p">{activeProj.summary}</p>
             <p className="proj-notes-p">{activeProj.architecturalNotes}</p>
 
@@ -403,58 +401,71 @@ export const Materials = () => (
 /* ═══════════════════════════════════════════
    TESTIMONIALS
    ═══════════════════════════════════════════ */
-export function Testimonials() {
-  const [idx, setIdx] = useState(0);
-  const [pause, setPause] = useState(false);
+function ReviewTiltCard({ review }) {
+  const cardRef = useRef(null);
+  const [style, setStyle] = useState({});
 
-  useEffect(() => {
-    if (pause) return;
-    const t = setInterval(() => setIdx((x) => (x + 1) % TESTIMONIALS_DATA.length), 8000);
-    return () => clearInterval(t);
-  }, [pause]);
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -12;
+    const rotateY = ((x - centerX) / centerX) * 12;
+    setStyle({
+      transform: `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.025, 1.025, 1.025)`,
+      transition: 'transform 0.1s ease-out',
+    });
+  };
 
-  const currentT = TESTIMONIALS_DATA[idx];
+  const handleMouseLeave = () => {
+    setStyle({
+      transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
+      transition: 'transform 0.5s ease-out',
+    });
+  };
 
   return (
-    <section className="sec alt">
-      <div
-        className="wrap narrow"
-        onMouseEnter={() => setPause(true)}
-        onMouseLeave={() => setPause(false)}
-      >
-        <Head e="TESTIMONIALS" t="Spaces That Speak For Themselves." />
-        <AnimatePresence mode="wait">
-          <motion.blockquote
-            key={currentT.id}
-            initial={{ opacity: 0, x: 24 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -24 }}
-            transition={{ duration: 0.7, ease: E }}
-            className="testimonial-luxury-box"
-          >
-            <div className="stars" aria-label="5 stars">
-              {[0, 1, 2, 3, 4].map((k) => (
-                <Star key={k} size={16} fill="#D4AF37" color="#D4AF37" />
-              ))}
-            </div>
-            <p>“{currentT.quote}”</p>
-            <footer>
-              <b className="gold">{currentT.clientName}</b>
-              <span> · {currentT.clientRole}</span>
-              <div className="test-meta-loc">
-                {currentT.location} ({currentT.area}) · {currentT.year}
-              </div>
-            </footer>
-          </motion.blockquote>
-        </AnimatePresence>
-        <div className="dots">
-          {TESTIMONIALS_DATA.map((_, k) => (
-            <button
-              key={k}
-              aria-label={'Testimonial ' + (k + 1)}
-              className={k === idx ? 'on' : ''}
-              onClick={() => setIdx(k)}
-            />
+    <div
+      ref={cardRef}
+      className="review-tilt-card"
+      style={style}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className="stars" aria-label="5 stars" style={{ display: 'flex', gap: '4px' }}>
+        {[0, 1, 2, 3, 4].map((k) => (
+          <Star key={k} size={15} fill="#D4AF37" color="#D4AF37" />
+        ))}
+      </div>
+      <p className="review-quote-text">“{review.quote}”</p>
+      <div className="review-footer-row">
+        <span className="review-client-name">{review.clientName}</span>
+        <span className="review-location-badge">
+          <MapPin size={13} className="gold" />
+          {review.location}
+        </span>
+      </div>
+    </div>
+  );
+}
+
+export function Testimonials() {
+  return (
+    <section className="sec alt" style={{ overflow: 'hidden' }}>
+      <div className="wrap">
+        <Head
+          e="CLIENT REVIEWS"
+          t="Genuine Reviews From Homeowners."
+          s="Real feedback from families who entrusted their construction and interiors to Ashraya across Bangalore, Channapatna, Mandya, and Maddur."
+        />
+      </div>
+      <div className="reviews-ticker-wrapper">
+        <div className="reviews-ticker-track">
+          {[...TESTIMONIALS_DATA, ...TESTIMONIALS_DATA].map((review, i) => (
+            <ReviewTiltCard key={`${review.id}-${i}`} review={review} />
           ))}
         </div>
       </div>
@@ -543,12 +554,19 @@ export function Contact() {
           />
           <ul className="info">
             <li>
-              <Phone size={18} className="gold" />
-              <span>+91 98765 43210</span>
+              <Phone size={18} className="gold" style={{ flexShrink: 0, marginTop: 4 }} />
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                <a href="tel:+917795259014" style={{ color: 'var(--ivory)', transition: 'color .3s' }}>
+                  +91 77952 59014
+                </a>
+                <a href="tel:+918722178305" style={{ color: 'var(--ivory)', transition: 'color .3s' }}>
+                  +91 87221 78305
+                </a>
+              </div>
             </li>
             <li>
               <Mail size={18} className="gold" />
-              <span>studio@ashraya.in</span>
+              <a href="mailto:studio@ashraya.in" style={{ color: 'var(--ivory)' }}>studio@ashraya.in</a>
             </li>
             <li>
               <MapPin size={18} className="gold" />
@@ -559,15 +577,16 @@ export function Contact() {
               <span>Mon–Sat: 9:30 AM – 7:00 PM (By Appointment)</span>
             </li>
           </ul>
-          <a
-            className="btn btn-o"
-            href="https://wa.me/919876543210"
-            target="_blank"
-            rel="noreferrer"
-            style={{ marginTop: 12 }}
-          >
-            <MessageCircle size={18} /> WhatsApp us
-          </a>
+          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: 14 }}>
+            <a
+              className="btn btn-o"
+              href="https://wa.me/917795259014"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <MessageCircle size={18} /> WhatsApp (+91 77952 59014)
+            </a>
+          </div>
         </div>
         <Reveal>
           <form
@@ -584,7 +603,7 @@ export function Contact() {
               </label>
               <label>
                 Phone Number *
-                <input required name="phone" type="tel" placeholder="+91 98765 43210" />
+                <input required name="phone" type="tel" placeholder="+91 77952 59014" />
               </label>
             </div>
             <label>
@@ -682,7 +701,21 @@ export const Footer = () => (
           <p style={{ marginTop: 16, lineHeight: 1.7 }}>
             An architectural and interior design atelier uniting turnkey structural engineering with bespoke luxury interiors across South India.
           </p>
-          <div className="soc" style={{ marginTop: 24 }}>
+          <div style={{ marginTop: 16, display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.88rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Phone size={15} className="gold" style={{ flexShrink: 0 }} />
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px 10px' }}>
+                <a href="tel:+917795259014" style={{ color: 'var(--ivory)' }}>+91 77952 59014</a>
+                <span style={{ color: 'var(--mute)' }}>·</span>
+                <a href="tel:+918722178305" style={{ color: 'var(--ivory)' }}>+91 87221 78305</a>
+              </div>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--mute)', fontSize: '0.82rem' }}>
+              <MapPin size={15} className="gold" style={{ flexShrink: 0 }} />
+              <span>Bangalore · Channapatna · Mandya · Maddur</span>
+            </div>
+          </div>
+          <div className="soc" style={{ marginTop: 20 }}>
             {[
               [Instagram, 'Instagram'],
               [Facebook, 'Facebook'],

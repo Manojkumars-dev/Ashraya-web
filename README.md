@@ -2,7 +2,8 @@
 
 > **"Dreams on Beams."**  
 > _Architecture · Civil Engineering · Bespoke Luxury Interiors_  
-> _Hyderabad · Bengaluru · Chennai_
+> _Bangalore · Channapatna · Mandya · Maddur_  
+> _Direct Contact: +91 77952 59014 · +91 87221 78305_
 
 An architectural, civil contracting, and bespoke interior design atelier website featuring an interactive 3D anatomy room, curated investment packages, live square-footage cost estimators, and showcase monographs.
 
@@ -134,4 +135,4 @@ npm run preview
 ## 📄 License & Copyright
 
 © 2026 **Ashraya Constructions & Interiors**. All Rights Reserved.  
-_DREAMS ON BEAMS · HYDERABAD · BENGALURU · CHENNAI_
+_DREAMS ON BEAMS · BANGALORE · CHANNAPATNA · MANDYA · MADDUR_

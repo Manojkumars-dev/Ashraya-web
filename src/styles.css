@@ -349,10 +349,12 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--gold);box-s
 .proj-meta-tags {
   display: flex;
   gap: 18px;
-  font-size: 0.82rem;
+  font-size: 0.88rem;
   color: var(--gold);
   flex-wrap: wrap;
-  margin-bottom: 8px;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
 }
 .proj-meta-tags span {
   display: flex;
@@ -823,4 +825,152 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--gold);box-s
 .comp-dim-col {
   white-space: nowrap;
   color: var(--ivory);
+}
+
+/* Nav Phone Link Styles */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.nav-phone-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--ivory);
+  padding: 10px 16px;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  background: rgba(20, 24, 31, 0.6);
+  transition: all 0.3s var(--ease);
+}
+.nav-phone-pill:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(212, 175, 55, 0.08);
+}
+.nav-call-mobile {
+  display: none;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  background: rgba(20, 24, 31, 0.8);
+  color: var(--gold);
+  transition: all 0.3s;
+}
+.nav-call-mobile:hover {
+  background: var(--gold);
+  color: var(--bg);
+}
+@media (max-width: 1100px) {
+  .nav-phone-pill {
+    display: none;
+  }
+  .nav-call-mobile {
+    display: flex;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   Option 2: Continuous Auto-Flowing Reviews & 3D Tilt Cards
+   ═══════════════════════════════════════════ */
+.reviews-ticker-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 0 36px;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+.reviews-ticker-track {
+  display: flex;
+  gap: 28px;
+  width: max-content;
+  animation: reviewsMarquee 48s linear infinite;
+  will-change: transform;
+}
+.reviews-ticker-wrapper:hover .reviews-ticker-track {
+  animation-play-state: paused;
+}
+@keyframes reviewsMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.review-tilt-card {
+  flex: 0 0 390px;
+  max-width: 390px;
+  background: var(--s2);
+  border: 1px solid var(--line);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 4px;
+  position: relative;
+  transition: border-color 0.4s var(--ease), box-shadow 0.4s var(--ease), transform 0.15s ease-out;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  user-select: none;
+}
+.review-tilt-card:hover {
+  border-color: rgba(212, 175, 55, 0.6);
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.8), 0 0 25px rgba(212, 175, 55, 0.15);
+  z-index: 10;
+}
+.review-quote-text {
+  font-size: 0.94rem;
+  line-height: 1.7;
+  color: #f4f1ea;
+  margin: 16px 0 24px;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+}
+.review-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+.review-client-name {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--gold);
+  letter-spacing: 0.02em;
+}
+.review-location-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+@media (max-width: 768px) {
+  .reviews-ticker-wrapper {
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  }
+  .review-tilt-card {
+    flex: 0 0 310px;
+    max-width: 310px;
+    padding: 24px 20px;
+  }
+  .review-quote-text {
+    font-size: 0.88rem;
+    margin: 14px 0 18px;
+  }
+  .review-client-name {
+    font-size: 1.05rem;
+  }
 }
